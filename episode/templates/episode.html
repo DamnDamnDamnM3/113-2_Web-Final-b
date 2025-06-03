@@ -1,0 +1,22 @@
+{% extends "master.html" %}
+
+{% block title %}
+  {{ ep }}
+{% endblock %}
+
+{% block content %}
+  <h4> {{ ep }} </h3>
+  <div class="pre_next-container">
+    <a href='/episode/prev/{{ ep.id }}'>Prev</a> - 
+    <a href='/episode/next/{{ ep.id }}'>Next</a>
+  </div>
+  
+  <h6> English Plot </h2>  
+  <p> {{ ep.eng_plot }}</p>
+
+  <h6> 中文簡介 </h2>  
+  <p> {{ ep.tw_plot }}</p>
+
+
+  
+{% endblock %}

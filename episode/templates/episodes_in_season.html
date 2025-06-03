@@ -1,0 +1,19 @@
+{% extends "master.html" %}
+
+{% block title %}
+  All Episodes
+{% endblock %}
+
+
+{% block content %}
+
+  <h3>Episodes in Season {{ season.season_number }}</h3>
+  
+  <ul>
+    {% for e in episodes %}
+      <li> <strong>{{ e.season.season_number}}-{{ e.ep_number }}</strong>:  
+        <a href="/episode/{{e.id}}">{{ e.ep_title }}</a></li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

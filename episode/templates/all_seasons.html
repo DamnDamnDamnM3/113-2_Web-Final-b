@@ -1,0 +1,22 @@
+{% extends "master.html" %}
+
+{% block title %}
+  All Seasons
+{% endblock %}
+
+
+{% block content %}
+  {% load static %}            
+
+  <h3>Seasons</h3>
+  
+  <ul>
+    {% for s in seasons %}
+    <li>
+        <img class='img_season' src="{{ s.img.url }}" alt="Season {{ s.season_number }}">
+        <a href= '/season/{{ s.id }}'> <strong> Season {{ s.season_number }}</strong> </a>: {{ s.description }}
+    </li>    
+    {% endfor %}
+  </ul>
+
+{% endblock %}
