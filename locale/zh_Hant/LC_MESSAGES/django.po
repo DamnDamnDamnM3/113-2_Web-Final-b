@@ -1,0 +1,44 @@
+# Traditional Chinese translations for Friends project.
+msgid ""
+msgstr ""
+"Project-Id-Version: Friends\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-06-01 12:00+0800\n"
+"PO-Revision-Date: 2024-06-01 12:00+0800\n"
+"Last-Translator: \n"
+"Language-Team: Traditional Chinese\n"
+"Language: zh_Hant\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "HOME"
+msgstr "首頁"
+
+msgid "ADMIN"
+msgstr "管理"
+
+msgid "SEASONS"
+msgstr "季數"
+
+msgid "EPISODES"
+msgstr "集數"
+
+msgid "CASTS"
+msgstr "演員"
+
+msgid "LOGOUT"
+msgstr "登出"
+
+msgid "LOGIN"
+msgstr "登入"
+
+msgid "確定要登出嗎？"
+msgstr "確定要登出嗎？"
+
+msgid "Friends"
+msgstr "六人行"
+
+msgid "June 2024 Final Exam. @IECS, Feng Chia University"
+msgstr "2024年6月期末考。@逢甲大學資工系" 
