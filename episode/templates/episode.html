@@ -1,22 +1,73 @@
 {% extends "master.html" %}
 
 {% block title %}
-  {{ ep }}
+{{ ep }}
 {% endblock %}
 
 {% block content %}
-  <h4> {{ ep }} </h3>
+<h4> {{ ep }} </h3>
   <div class="pre_next-container">
-    <a href='/episode/prev/{{ ep.id }}'>Prev</a> - 
+    <a href='/episode/prev/{{ ep.id }}'>Prev</a> -
     <a href='/episode/next/{{ ep.id }}'>Next</a>
   </div>
-  
-  <h6> English Plot </h2>  
-  <p> {{ ep.eng_plot }}</p>
 
-  <h6> 中文簡介 </h2>  
-  <p> {{ ep.tw_plot }}</p>
+  <div class="like-container">
+    <button id="like-button" class="btn {% if user in ep.likes.all %}btn-danger{% else %}btn-outline-danger{% endif %}"
+      data-episode-id="{{ ep.id }}">
+      <i class="fas fa-heart"></i> <span id="likes-count">{{ ep.likes.count }}</span>
+    </button>
+  </div>
 
+  <h6>English Plot</h2>
+    <p> {{ ep.eng_plot }}</p>
 
-  
-{% endblock %}
+    <h6>中文簡介</h2>
+      <p> {{ ep.tw_plot }}</p>
+
+      {% if user.is_authenticated %}
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const likeButton = document.getElementById('like-button');
+          if (likeButton) {
+            likeButton.addEventListener('click', function () {
+              const episodeId = this.dataset.episodeId;
+              const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+              fetch(`/episode/${episodeId}/like/`, {
+                method: 'POST',
+                headers: {
+                  'X-CSRFToken': csrfToken,
+                  'Content-Type': 'application/json',
+                },
+                credentials: 'same-origin'
+              })
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                  }
+                  return response.json();
+                })
+                .then(data => {
+                  const button = document.getElementById('like-button');
+                  const likesCount = document.getElementById('likes-count');
+
+                  if (data.liked) {
+                    button.classList.remove('btn-outline-danger');
+                    button.classList.add('btn-danger');
+                  } else {
+                    button.classList.remove('btn-danger');
+                    button.classList.add('btn-outline-danger');
+                  }
+
+                  likesCount.textContent = data.likes_count;
+                })
+                .catch(error => {
+                  console.error('Error:', error);
+                  alert('按讚時發生錯誤，請稍後再試');
+                });
+            });
+          }
+        });
+      </script>
+      {% endif %}
+      {% endblock %}

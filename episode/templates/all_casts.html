@@ -1,22 +1,20 @@
 {% extends "master.html" %}
 
 {% block title %}
-  Main Casts
+Main Casts
 {% endblock %}
-
 
 {% block content %}
 
-  <h3>Casts</h3>
+<h3>Casts</h3>
 
-    {% for c in casts %}
+{% for c in casts %}
 
-      <img class='img_cast' src="{{ c.img_url }}" width="150">
+<img class='img_cast' src="{{ c.img_url }}" width="150">
 
-      <p><strong>Casts {{ c.name }}</strong> ({{ c.gender }}, {{ c.born_year }}): 
-      {{ c.introduction }} </p>
-    
-        
-    {% endfor %}
+<p><strong>Casts {{ c.name }}</strong> ({{ c.gender }}, {{ c.born_year }}):
+  {{ c.introduction }} </p>
+
+{% endfor %}
 
 {% endblock %}

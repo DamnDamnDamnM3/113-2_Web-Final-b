@@ -20,6 +20,7 @@ urlpatterns = [
     path("episode/prev/<int:id>", views.prev_episode, name="prev_episode"),
     path("episode/next/<int:id>", views.next_episode, name="next_episode"),
     path("casts", views.casts, name="casts"),
+    path("episode/<int:id>/like/", views.like_episode, name="like_episode"),
     path(
         "login/",
         auth_views.LoginView.as_view(template_name="registration/login.html"),
